@@ -8,17 +8,17 @@ describe 'inherits() tests', ->
   beforeEach () ->
 
     Point = (x, y) ->
-      this.x = x
-      this.y = y
+      @x = x
+      @y = y
     Point.prototype.length = ->
-      Math.sqrt(this.x*this.x + this.y*this.y)
+      Math.sqrt(@x*@x + @y*@y)
 
     Circle = (x, y, radius) ->
-      this._super(x, y)
-      this.radius = radius
+      @_super(x, y)
+      @radius = radius
     inherits(Circle, Point, {
       area: ->
-        Math.PI * this.radius * this.radius
+        Math.PI * @radius * @radius
     })
 
   describe 'constructor and prototype tests', ->
@@ -67,6 +67,6 @@ describe 'inherits() tests', ->
       circle.length().should.equal(Math.sqrt(5))
       circle.area().should.equal(Math.PI*circle.radius*circle.radius)
 
-    it 'inistances should not share prototype fields', ->
-      anotherCirlce = new Circle(3, 4, 5)
-      anotherCirlce.should.not.deep.equal(circle)
+    it 'instances should not share prototype fields', ->
+      anotherCircle = new Circle(3, 4, 5)
+      anotherCircle.should.not.eql(circle)
