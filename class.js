@@ -2,25 +2,32 @@ var inherits = require('./index');
 
 /**
  * var Point = new Class({
+ *      // named constructor is preferred
  *     constructor Point: function(x, y) {
  *         this.x = x;
  *         this.y = y;
  *     },
  *     length: function() {
- *         Math.sqrt(this.x * this.x + this.y * this.y)
+ *         return Math.sqrt(this.x * this.x + this.y * this.y);
  *     }
  * });
  *
  * var Circle = new Class({
  *     prototype: Point,
- *     constructor: function(x, y, radius) {
- *         this._super(x, y)
- *         this.radius = radius
+ *     constructor: function Circle(x, y, radius) {
+ *         this._super(x, y);
+ *         this.radius = radius;
  *     },
  *     area: function() {
- *         return Math.PI * this.radius * this.radius
+ *         return Math.PI * this.radius * this.radius;
  *     }
  * });
+ *
+ * var circle = new Circle(1, 2, 3);
+ * console.log(circle instanceof Point); // true
+ * console.log(circle instanceof Circle); // true
+ * console.log(circle.length()); // 2.23606797749979
+ * console.log(circle.area()); // 28.274333882308138
  *
  * @param {{}} proto constructor is required
  * @returns {function}
