@@ -1,0 +1,28 @@
+{
+  "name": "better-inherits",
+  "version": "0.1.0",
+  "description": "util.inherits with ability to provide a prototype.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "~1.10.0",
+    "gulp": "~3.8.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "coffee -m test/*.coffee && istanbul cover _mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "inherits",
+    "class",
+    "oop"
+  ],
+  "author": "andr",
+  "license": "BSD-2-Clause"
+}
