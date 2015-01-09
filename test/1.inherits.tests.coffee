@@ -1,5 +1,5 @@
 should = require('chai').should()
-inherits = require('../index')
+inherits = require('../inherits')
 
 describe 'inherits() tests', ->
   Point = null

@@ -1,9 +1,9 @@
-var inherits = require('./index');
+var inherits = require('./inherits');
 
 /**
  * var Point = new Class({
  *      // named constructor is preferred
- *     constructor Point: function(x, y) {
+ *     constructor: function Point(x, y) {
  *         this.x = x;
  *         this.y = y;
  *     },
@@ -14,8 +14,9 @@ var inherits = require('./index');
  *
  * var Circle = new Class({
  *     prototype: Point,
+ *     // named constructor is preferred
  *     constructor: function Circle(x, y, radius) {
- *         this._super(x, y);
+ *         this._super(x, y); // Point.call(this, x, y);
  *         this.radius = radius;
  *     },
  *     area: function() {

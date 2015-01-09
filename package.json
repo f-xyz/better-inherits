@@ -6,17 +6,18 @@
   "directories": {
     "test": "test"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.8.10",
     "chai": "~1.10.0",
-    "gulp": "~3.8.10"
+    "async": "~0.9.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "coffee -m test/*.coffee && istanbul cover _mocha"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "."
+    "url": "https://github.com/fantasticMrFox/better-inherits.git"
   },
   "keywords": [
     "inherits",
