@@ -14,7 +14,6 @@ var inherits = require('./inherits');
  *
  * var Circle = new Class({
  *     prototype: Point,
- *     // named constructor is preferred
  *     constructor: function Circle(x, y, radius) {
  *         this._super(x, y); // Point.call(this, x, y);
  *         this.radius = radius;

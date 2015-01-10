@@ -1,5 +1,6 @@
 node_modules/
 coverage/
 .idea/
-test/*.js
-test/*.map
+#test/*.js
+#test/*.map
+dist/*.js

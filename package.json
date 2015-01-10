@@ -1,7 +1,7 @@
 {
   "name": "better-inherits",
-  "version": "0.1.0",
-  "description": "util.inherits with ability to provide a prototype.",
+  "version": "0.1.1",
+  "description": "util.inherits with an ability to provide a prototype.",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -10,7 +10,13 @@
   "devDependencies": {
     "gulp": "~3.8.10",
     "chai": "~1.10.0",
-    "async": "~0.9.0"
+    "gulp-util": "~3.0.2",
+    "gulp-coffee": "~2.2.0",
+    "gulp-uglify": "~1.0.2",
+    "del": "~1.1.1",
+    "gulp-concat": "~2.4.3",
+    "gulp-sourcemaps": "~1.3.0",
+    "colors": "~1.0.3"
   },
   "scripts": {
     "test": "gulp test"

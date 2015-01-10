@@ -33,7 +33,7 @@
  * @returns {{}} constructor's new prototype
  */
 function inherits(constructor, base, prototype) {
-    constructor._super = base;
+    constructor._base = base;
     constructor.prototype = Object.create(base.prototype, {
         constructor: {
             value: constructor,
@@ -41,7 +41,7 @@ function inherits(constructor, base, prototype) {
             writable: true,
             configurable: true
         },
-        _super: {
+        _base: {
             value: base,
             enumerable: false,
             writable: true,
