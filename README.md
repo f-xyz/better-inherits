@@ -1,7 +1,7 @@
-Slightly improved util.inherits().
+Slightly improved util.inherits()
 --------------------------------
 
-~~`npm install better-inherits`~~
+`npm install better-inherits`
 
 How to use
 --------------------------
