@@ -1,40 +1,60 @@
 var gulp = require('gulp');
-var coffee = require('gulp-coffee');
+var mocha = require('gulp-spawn-mocha');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var debug = require('gulp-debug');
 var sourcemaps = require('gulp-sourcemaps');
+var rename = require('gulp-rename');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var del = require('del');
 var colors = require('colors');
+var browserify = require('browserify');
+var async = require('async');
 
-gulp.task('default', ['clean', 'build']);
+gulp.task('default', ['build']);
+gulp.task('build', ['clean', 'browserify', 'test']);
 
-gulp.task('q', function() {
-    gulp.src('test/*.coffee')
-        .pipe(gulp.dest('gulp-test'));
+gulp.task('clean', function(cb) {
+    async.parallel([
+        function(next) { del('dist/*.*', next) },
+        function(next) { del('coverage/', next) }
+    ], cb);
 });
 
-gulp.task('clean', function(next) {
-    del('test/*.js');
-    del('test/*js');
+gulp.task('browserify', function() {
+    var bundler = browserify({
+        entries: ['./index.js'],
+        debug: true
+    });
+    return bundler
+        .bundle()
 
-    //async.parallel([
-        //task('rm --verbose test/*.js'),
-        //task('rm --verbose test/*.map'),
-        //task('rm --verbose dist/*.js'),
-        //task('rm --verbose -r coverage/')
-    //], next);
+        .pipe(source(getBundleName('.js')))
+        .pipe(gulp.dest('dist/'))
+
+        .pipe(rename({ extname: '.min.js' }))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('dist/'))
+    ;
 });
 
-gulp.task('build', ['test'], function(next) {
-    //async.series([
-    //    task('browserify --debug index.js -o dist/better-inherits.js'),
-    //    task('uglify -s dist/better-inherits.js -o dist/better-inherits.min.js')
-    //], next);
+gulp.task('test', function() {
+    gulp.src('test/*.*', { read: false })
+        .pipe(mocha({
+            R: 'spec',
+            colors: true,
+            debug: true,
+            istanbul: true,
+            compilers: 'coffee:coffee-script/register'
+        }));
 });
 
-gulp.task('test', function(next) {
-    //async.series([
-    //    task('coffee -cm test/*.coffee'),
-    //    task('istanbul cover _mocha')
-    //], next);
-});
+function getBundleName(ext) {
+    var name = require('./package.json').name;
+    var version = require('./package.json').version;
+    return name + '-' + version + ext;
+}
