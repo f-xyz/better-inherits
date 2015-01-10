@@ -1,6 +1,6 @@
 {
   "name": "better-inherits",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "util.inherits with an ability to provide a prototype.",
   "main": "index.js",
   "directories": {
