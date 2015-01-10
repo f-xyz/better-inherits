@@ -110,9 +110,12 @@ it('inherited method', function() {
 });
 ```
 
-Build
+How to build and test
 ----------------
 
-```npm install```
+```
+	npm install
+	gulp build
+```
 
-```gulp build```
+```gulp test```
