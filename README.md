@@ -83,4 +83,35 @@ var Circle = new Class({
         return Math.PI * this.r * this.r;
     }
 });
-.
+
+var circle;
+
+it('instance creation',function() {
+    circle = new Circle(1, 2, 3);
+    circle.x.should.equal(1);
+    circle.y.should.equal(2);
+    circle.r.should.equal(3);
+});
+
+it('instance of Point', function() {
+    circle.should.instanceOf(Point);
+});
+
+it('instance of Circle', function() {
+    circle.should.instanceOf(Circle);
+});
+
+it('own method', function() {
+    circle.area().should.equal(28.274333882308138);
+});
+
+it('inherited method', function() {
+    circle.length().should.equal(2.23606797749979);
+});
+```
+
+Build
+----------------
+
+```npm install```
+```gulp build```
