@@ -1,6 +1,6 @@
 var should = require('chai').should();
-var inherits = require('../inherits');
-var Class = require('../class');
+var inherits = require('../index');
+var Class = inherits.Class;
 
 describe('Integration tests', function() {
 

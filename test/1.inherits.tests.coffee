@@ -27,7 +27,7 @@ describe 'inherits() tests', ->
       Circle._base.should.equal(Point)
 
     it 'should extend base\'s prototype', ->
-      Circle.prototype.__proto__.should.equal(Point.prototype)
+      Object.getPrototypeOf(Circle.prototype).should.equal(Point.prototype)
       Circle.prototype.constructor.should.equal(Circle)
       Circle.prototype._base.should.equal(Point)
 
@@ -37,7 +37,7 @@ describe 'inherits() tests', ->
     it 'should do the same if called without prototype param.', ->
       `function A() {}`
       inherits(A, Point)
-      A.prototype.__proto__.should.equal(Point.prototype)
+      Object.getPrototypeOf(A.prototype).should.equal(Point.prototype)
       A.prototype.constructor.should.equal(A)
       A.prototype._base.should.equal(Point)
 

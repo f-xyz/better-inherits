@@ -2,7 +2,7 @@ var inherits = require('./inherits');
 
 /**
  * var Point = new Class({
- *      // named constructor is preferred
+ *     // named constructor is preferred
  *     constructor: function Point(x, y) {
  *         this.x = x;
  *         this.y = y;
@@ -29,29 +29,28 @@ var inherits = require('./inherits');
  * console.log(circle.length()); // 2.23606797749979
  * console.log(circle.area()); // 28.274333882308138
  *
- * @param {{}} proto constructor is required
- * @returns {function}
+ * @param {{ constructor: function }} proto prototype with constructor
+ * @returns {function|Object}
  * @constructor
  */
 function Class(proto) {
+    if (proto) {
 
-    if (proto.constructor === undefined
-    ||  proto.constructor === Object) {
-        throw new Error('constructor is required!');
-    }
+        var constructor = proto.constructor;
 
-    var constructor = proto.constructor;
+        if (proto.prototype !== undefined) {
+            var base = proto.prototype;
+            delete proto.prototype;
+            inherits(constructor, base, proto);
+        } else {
+            constructor.prototype = proto;
+        }
 
-    if (proto.prototype !== undefined) {
-        var base = proto.prototype;
-        delete proto.prototype;
-        inherits(constructor, base, proto);
+        return constructor;
+
     } else {
-        constructor.prototype = proto;
-        constructor.prototype.constructor = constructor;
+        return Object;
     }
-
-    return constructor;
 }
 
 module.exports = Class;

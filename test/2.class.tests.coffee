@@ -28,7 +28,7 @@ describe 'inherits.Class() tests', ->
       Circle._base.should.equal(Point)
 
     it 'should extend base\'s prototype', ->
-      Circle.prototype.__proto__.should.equal(Point.prototype)
+      Object.getPrototypeOf(Circle.prototype).should.equal(Point.prototype)
       Circle.prototype.constructor.should.equal(Circle)
       Circle.prototype._base.should.equal(Point)
 
@@ -41,10 +41,6 @@ describe 'inherits.Class() tests', ->
     it 'should keep constructor\'s name', ->
       `var A = new Class({ constructor: function A() {}})`
       A.name.should.equal('A')
-
-    it 'should throw exception if no constructor is provided', ->
-      test = () -> new Class({})
-      test.should.throw()
 
   describe 'instance tests', ->
     circle = null
@@ -70,3 +66,15 @@ describe 'inherits.Class() tests', ->
     it 'instances should not share prototype fields', ->
       anotherCircle = new Circle(3, 4, 5)
       anotherCircle.should.not.eql(circle)
+
+  describe 'parameter defaults tests', ->
+
+    it 'should set constructor to Object() if no constructor is provided', ->
+      Empty = new Class({})
+      Empty.should.instanceOf(Function)
+      (new Empty()).should.be.an('object')
+
+    it 'should return empty function if no parameters provided', ->
+      Empty = new Class()
+      Empty.name.should.equal(Object.name)
+      (new Empty()).should.be.an('object')
