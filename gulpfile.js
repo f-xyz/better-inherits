@@ -19,14 +19,18 @@ gulp.task('build', ['clean', 'browserify', 'test', 'jsdoc']);
 gulp.task('clean', function(cb) {
     async.parallel([
         function(next) { del('dist/*.*', next) },
-        function(next) { del('coverage/', next) }
+        function(next) { del('coverage/', next) },
+        function(next) { del('docs/', next) }
     ], cb);
 });
 
 gulp.task('browserify', function() {
     var bundler = browserify({
         entries: ['./index.js'],
-        debug: true
+        debug: true,
+        detectGlobals: false,
+        insertGlobals: false,
+        standalone: 'inherits'
     });
     return bundler
         .bundle()
@@ -44,7 +48,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('test', function() {
-    gulp.src('test/*.*', { read: false })
+    return gulp.src('test/*.*', { read: false })
         .pipe(mocha({
             R: 'spec',
             colors: true,
@@ -55,7 +59,7 @@ gulp.task('test', function() {
 });
 
 gulp.task('jsdoc', function() {
-    gulp.src('*.js')
+    return gulp.src('*.js')
         .pipe(jsdoc('docs'))
 });
 
