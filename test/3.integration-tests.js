@@ -100,5 +100,19 @@ describe('Integration tests', function() {
             circle.length().should.equal(2.23606797749979);
         });
     });
+    
+    describe('prototype fields sharing', function() {
+        var Mesh = new Class({
+            points: [],
+            constructor: function() {}
+        });
+        
+        var mesh1 = new Mesh();
+        var mesh2 = new Mesh();
+        
+        it('should share prototype properties', function() {
+            mesh1.points.should.eq(mesh2.points);
+        });
+    });
 
 });

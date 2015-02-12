@@ -24,8 +24,7 @@
     "gulp-uglify": "~1.0.2",
     "gulp-util": "~3.0.2",
     "vinyl-buffer": "~1.0.0",
-    "vinyl-source-stream": "~1.0.0",
-    "gulp-jsdoc": "~0.1.4"
+    "vinyl-source-stream": "~1.0.0"
   },
   "scripts": {
     "test": "gulp test"
