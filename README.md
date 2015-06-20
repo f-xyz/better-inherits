@@ -1,4 +1,4 @@
-Slightly improved util.inherits()
+Improved util.inherits() and Klass pattern
 --------------------------------
 
 `npm install better-inherits`
@@ -109,13 +109,10 @@ it('inherited method', function() {
     circle.length().should.equal(2.23606797749979);
 });
 ```
-
 How to build and test
 ----------------
-
 ```
-	npm install
-	gulp build
+npm install
+gulp build
+gulp test
 ```
-
-```gulp test```

@@ -1,14 +1,11 @@
 var gulp = require('gulp');
 var mocha = require('gulp-spawn-mocha');
-var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var debug = require('gulp-debug');
 var sourcemaps = require('gulp-sourcemaps');
 var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var del = require('del');
-var colors = require('colors');
 var browserify = require('browserify');
 var async = require('async');
 
