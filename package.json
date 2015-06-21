@@ -1,6 +1,6 @@
 {
   "name": "better-inherits",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "util.inherits with an ability to provide a prototype.",
   "main": "index.js",
   "directories": {
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fantasticMrFox/better-inherits.git"
+    "url": "https://github.com/f-xyz/better-inherits.git"
   },
   "keywords": [
     "inherits",
