@@ -1,6 +1,6 @@
 {
   "name": "better-inherits",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "util.inherits with an ability to provide a prototype.",
   "main": "index.js",
   "directories": {
@@ -36,6 +36,6 @@
     "class",
     "oop"
   ],
-  "author": "andr",
-  "license": "BSD-2-Clause"
+  "author": "f-xyz <andrey.lischina@gmail.com> (https://github.com/f-xyz)",
+  "license": "MIT"
 }
