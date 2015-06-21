@@ -1,9 +1,19 @@
+# Deprecated #
+
+Please use *class* keyword with^
+* https://babeljs.io/
+* http://coffeescript.org/
+* http://www.typescriptlang.org/
+* etc.
+
+-----------------------------
+
 Improved util.inherits() and Klass pattern
 --------------------------------
 
 `npm install better-inherits`
 
-How to use
+How to use inherits()
 --------------------------
 
 ```javascript
@@ -56,7 +66,7 @@ How to use
     });
 ```
 
-Or using fancy syntax
+Klass pattern
 --------------------------------
 
 ```javascript
