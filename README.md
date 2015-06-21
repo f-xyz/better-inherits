@@ -1,6 +1,6 @@
 # Deprecated #
 
-Please use *class* keyword with^
+Please use the *class* keyword with:
 * https://babeljs.io/
 * http://coffeescript.org/
 * http://www.typescriptlang.org/
